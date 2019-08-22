@@ -1,0 +1,17 @@
+filters:
+  "^labs/.*":
+    labels:
+      - kind/lab-updates
+  "^administrator/.*":
+    labels:
+      - kind/lab-deployment
+reviewers:
+  - jparrill
+  - codificat
+  - iranzo
+  - ptrnull
+approvers:
+  - jparrill
+  - codificat
+  - iranzo
+  - ptrnull
