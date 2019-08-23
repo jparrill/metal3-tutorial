@@ -32,7 +32,8 @@ function clone_repo() {
     pushd $DEST
 
     git am --abort 2&>/dev/null || true 
-    git checkout master
+    #git checkout master
+    git checkout feature/config_cpu_mem
     git fetch origin
     git rebase origin/master
     popd
@@ -64,9 +65,15 @@ function create_dummy_config() {
     if [[ ! -f "${REPO_PATH}/$1" ]]; then
         touch "${REPO_PATH}/$1/config_$(whoami).sh"
         chmod 755 "${REPO_PATH}/$1/config_$(whoami).sh"
+
+        # Configure VMs
+        echo 'VM_EXTRADISKS="true"' >> "${REPO_PATH}/$1/config_$(whoami).sh"
+        echo 'NUM_MASTERS="1"' >> "${REPO_PATH}/$1/config_$(whoami).sh"
+        echo 'NUM_WORKERS="1"' >> "${REPO_PATH}/$1/config_$(whoami).sh"
     fi
 }
 
 validations
-clone_repo metal3-dev-env https://github.com/metal3-io/metal3-dev-env.git
+#clone_repo metal3-dev-env https://github.com/metal3-io/metal3-dev-env.git
+clone_repo metal3-dev-env https://github.com/jparrill/metal3-dev-env.git
 deploy metal3-dev-env
