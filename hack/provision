@@ -63,6 +63,7 @@ function create_dummy_config() {
     # Create config on dev env project
     if [[ ! -f "${REPO_PATH}/$1" ]]; then
         touch "${REPO_PATH}/$1/config_$(whoami).sh"
+        chmod 755 "${REPO_PATH}/$1/config_$(whoami).sh"
     fi
 }
 
