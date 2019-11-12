@@ -31,7 +31,7 @@ function clone_repo() {
 
     pushd $DEST
 
-    git am --abort 2&>/dev/null || true 
+    git am --abort 2&>/dev/null || true
     #git checkout master
     git checkout feature/config_cpu_mem
     git fetch origin
@@ -40,14 +40,14 @@ function clone_repo() {
 }
 
 function validations() {
-	# Common duties to perform before the script execution
-	BASE_PATH="$(pwd)"
-	REPO_PATH="${BASE_PATH}/env"
-	mkdir -p "${REPO_PATH}"
+    # Common duties to perform before the script execution
+    BASE_PATH="$(pwd)"
+    REPO_PATH="${BASE_PATH}/env"
+    mkdir -p "${REPO_PATH}"
 
     if [[ ! -e ${REPO_PATH} ]]; then
-		echo "Error: File or Folder doesn't exists"
-		exit -1
+        echo "Error: File or Folder doesn't exists"
+        exit -1
     fi
 }
 
@@ -57,7 +57,7 @@ function deploy() {
 
     # Use the $1 repo to perform a make command over it
     cd ${REPO_PATH}/$1
-    make 
+    make
 }
 
 function create_dummy_config() {
